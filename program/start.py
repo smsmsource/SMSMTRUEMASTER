@@ -100,12 +100,12 @@ async def start_(c: Client, message: Message):
                     )
                 ],
                 [    InlineKeyboardButton(
-                    "❗️⚠️Youtube Channel⚠️❗️", url="https://www.youtube.com/channel/UCCmjxoJe_6T1ota84YH3ikg?sub_confirmation=1"
+                    "🌐للتواصل مع صاحب السورس🌐", url="https://t.me/PV_SMSM"
                      )
                 ],
                 [
                     InlineKeyboardButton(
-                    "Mining ₿itcoin", url="http://t.me/ProBTCMinerbot?start=ref1261923198"
+                    "🌐شات للدعم والاستفسارات🌐", url="https://t.me/G_SMSM"
                     )
                 ]
             ]
@@ -119,7 +119,7 @@ async def start_(c: Client, message: Message):
 @check_blacklist()
 async def help(c: Client, message: Message):
     await message.reply_text(
-        f""" ✨ **Hello {message.from_user.mention()} !**\n
+        f""" ✨ **أهلا{message.from_user.mention()} !**\n
 🔷 **To Know How to setup this Bot? Read 🤖 Setting Up This Bot in Group **\n
 🔷 **To Know Play Video/Audio/Live? Read ✍️ Quick Use Commands **\n
 🔷 **To Know Every Single Command Of Bot? Read 🎀 All Commands**\n """,
