@@ -57,7 +57,7 @@ async def _human_time_duration(seconds):
 
 
 @Client.on_message(
-    command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
+    command(["music", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
 @check_blacklist()
 async def start_(c: Client, message: Message):
@@ -68,35 +68,35 @@ async def start_(c: Client, message: Message):
         await add_served_user(user_id)
         return
     await message.reply_text(
-        f"""👋 **Welcome {message.from_user.mention()} !**\n
-🤖 [{me_bot.first_name}](https://t.me/{BOT_USERNAME}) **Allows you to play music🎶 and video🎥 on groups through the Telegram Group video chat!**\n
-📕 **Find out all the Bot's commands and how they work by clicking on the » 🛠️ Check Commands button!**\n
-🔖 **To know how to use this bot, please click on the » 📕 Read Basic Guide button!**\n
-👽 **To Deploy Your Own Source Click On The » 👉 My Source Code Button **\n """,
+        f"""👋 **اهلا💫 {message.from_user.mention()} !**\n
+🤖 [{me_bot.first_name}](https://t.me/{BOT_USERNAME}) **يسمح لك بتشغيل اغاني🎶 و أفلام 🎥 في المحادثه الصوتيه بالجروب!**\n
+📕 **لمعرفه جميع اوامر البوت الكامله الرجاء الضغط علي » 🛠️ الاوامر!**\n
+🔖 **لمعرفة كيفية استعمال البوت الرجاء الضغط علي » 📕 دليل الاستعمال!**\n
+👽 **للتواصل مع صاحب السورس الرجاء الضغط علي» 👉 𝐒𝐎𝐔𝐑𝐂𝐄 𝐒𝐌𝐒𝐌🌐 **\n """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "➕ اضفني الي مجموعتك ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("📕 Basic Guide", callback_data="user_guide")],
+                [InlineKeyboardButton("📕 دليل الاستعمال", callback_data="user_guide")],
                 [
-                    InlineKeyboardButton("🛠️ Commands", callback_data="command_list"),
-                    InlineKeyboardButton("💲 Donate", url=f"https://t.me/{OWNER_USERNAME}"),
+                    InlineKeyboardButton("🛠️ الاوامر", callback_data="command_list"),
+                    InlineKeyboardButton("🌐 صاحب البوت", url=f"https://t.me/{OWNER_USERNAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👨🏾‍🤝‍👨🏼 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👨🏾‍🤝‍👨🏼 جروب الدعم", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "🔗 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "🔗 قناه الدعم", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👉 My Source Code", url="https://github.com/SRTheProgrammer/SuraVCStream"
+                        "𝐒𝐎𝐔𝐑𝐂𝐄 𝐒𝐌𝐒𝐌🌐", url="https://t.me/C_SMSM"
                     )
                 ],
                 [    InlineKeyboardButton(
