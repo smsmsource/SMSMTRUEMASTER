@@ -1,7 +1,7 @@
 {
     "name": "Video/Music Stream Bot",
     "description": "Telegram bot for Streaming Video & Music trought the Telegram Group Video Chat, powered by PyTgCalls and Pyrogram",
-    "logo": "https://telegra.ph/file/5f2e911c64cf25f99c591.jpg",
+    "logo": "https://telegra.ph/file/2a27cb8666827154b2c12.jpg",
     "keywords": [
         "py-tgcalls",
         "telegram bot",
@@ -12,7 +12,7 @@
         "pyrogram"
     ],
     "website": "https://t.me/SuraBotStats",
-    "repository": "https://github.com/drlucifer2003/ffftttrrraaasss",
+    "repository": "https://github.com/smsmsource/smsmkakinit",
     "success_url": "https://t.me/SuraReddyTheProgrammer",
     "env": {
         "API_ID": {
