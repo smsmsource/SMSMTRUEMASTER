@@ -9,26 +9,29 @@ from pyrogram.types import (
 def stream_markup(user_id):
   buttons = [
     [
-      InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data=f'stream_menu_panel | {user_id}'),
-      InlineKeyboardButton(text="• Cʟᴏsᴇ", callback_data=f'set_close'),
-    ],
+      InlineKeyboardButton(text="𝗠𝗲𝗻𝘂 🖱️", callback_data=f'stream_menu_panel | {user_id}'),
+      InlineKeyboardButton(text="𝗖𝗹𝗼𝘀𝗲 🗑️", callback_data=f'set_close'),
+    [,
+    [
+      InlineKeyboardButton("𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", callback_data="ahmedelnqyb")
   ]
+ ]
   return buttons
 
 
 def menu_markup(user_id):
   buttons = [
     [
-      InlineKeyboardButton(text="⏹", callback_data=f'set_stop | {user_id}'),
-      InlineKeyboardButton(text="⏸", callback_data=f'set_pause | {user_id}'),
-      InlineKeyboardButton(text="▶️", callback_data=f'set_resume | {user_id}'),
+      InlineKeyboardButton(text="𝗘𝗡𝗗 ⏹", callback_data=f'set_stop | {user_id}'),
+      InlineKeyboardButton(text="𝗣𝗔𝗨𝗦𝗘 ⏸", callback_data=f'set_pause | {user_id}'),
+      InlineKeyboardButton(text="𝗥𝗘𝗦𝗨𝗠𝗘 ▶️", callback_data=f'set_resume | {user_id}'),
     ],
     [
-      InlineKeyboardButton(text="🔇", callback_data=f'set_mute | {user_id}'),
-      InlineKeyboardButton(text="🔊", callback_data=f'set_unmute | {user_id}'),
+      InlineKeyboardButton(text="𝗠𝗨𝗧𝗘 🔇", callback_data=f'set_mute | {user_id}'),
+      InlineKeyboardButton(text="𝗨𝗡 𝗠𝗨𝗧𝗘 🔊", callback_data=f'set_unmute | {user_id}'),
     ],
     [
-      InlineKeyboardButton(text="🔙 Go Back", callback_data='stream_home_panel'),
+      InlineKeyboardButton(text="𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", callback_data='ahmedelnqyb'),
     ]
   ]
   return buttons
@@ -38,7 +41,7 @@ close_mark = InlineKeyboardMarkup(
   [
     [
       InlineKeyboardButton(
-        "🗑 Close", callback_data="set_close"
+        "𝗖𝗹𝗼𝘀𝗲 🗑️", callback_data="set_close"
       )
     ]
   ]
@@ -49,7 +52,7 @@ back_mark = InlineKeyboardMarkup(
   [
     [
       InlineKeyboardButton(
-        "🔙 Go Back", callback_data="stream_menu_panel"
+        "🔙 𝗚𝗼 𝗕𝗮𝗰𝗸", callback_data="stream_menu_panel"
       )
     ]
   ]
