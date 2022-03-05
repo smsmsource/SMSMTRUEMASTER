@@ -18,6 +18,8 @@ from config import (
     OWNER_ID,
 )
 
+
+
 @Client.on_callback_query(filters.regex("arbic"))
 async def arbic(_, query: CallbackQuery):
     await query.answer("home start")
@@ -57,6 +59,7 @@ async def arbic(_, query: CallbackQuery):
         ),
         disable_web_page_preview=True,
     )
+
 @Client.on_callback_query(filters.regex("english"))
 async def english(_, query: CallbackQuery):
     await query.answer("home start")
