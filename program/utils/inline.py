@@ -1,8 +1,11 @@
 """ inline section button """
 
+from config import BOT_USERNAME
 from pyrogram.types import (
+  CallbackQuery,
   InlineKeyboardButton,
   InlineKeyboardMarkup,
+  Message,
 )
 
 
@@ -11,7 +14,7 @@ def stream_markup(user_id):
     [
       InlineKeyboardButton(text="𝗠𝗲𝗻𝘂 🖱️", callback_data=f'stream_menu_panel | {user_id}'),
       InlineKeyboardButton(text="𝗖𝗹𝗼𝘀𝗲 🗑️", callback_data=f'set_close'),
-    [,
+    ],
     [
       InlineKeyboardButton("𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", callback_data="ahmedelnqyb")
   ]
