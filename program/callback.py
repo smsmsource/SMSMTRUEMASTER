@@ -19,56 +19,82 @@ from config import (
 )
 
 
-@Client.on_callback_query(filters.regex("home_start"))
-@check_blacklist()
-async def start_set(_, query: CallbackQuery):
+@Client.on_callback_query(filters.regex("arbic"))
+async def arbic(_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
-        f"""👋 **أهلا{query.message.from_user.mention()} !**\n
-🤖 [{me_bot.first_name}](https://t.me/{BOT_USERNAME}) **يسمح لك بتشغيل الاغاني 🎶 والافلام 🎥 في المحادثات الصوتية!**\n
-📕 **لمعرفة جميع اوامر البوت الرجاء الضغط علي » 🛠️ الاوامر!**\n
-🔖 **لمعرفة كيفية استخدام البوت الرجاء الضغط علي » 📕 دليل الاستعمال!**\n
-👽 **للوصول لقناه السورس الرجاء الضغط علي » 𝐒𝐎𝐔𝐑𝐂𝐄 𝐒𝐌𝐒𝐌🌐 **\n """,
+        f"""مرحباً بك \n
+⌁ ⁞  بوت تشغيل الأغاني والفيديو  في المكالمه ' المرئية
+ البوت قيد التشغيل الان ⌯
+⌁ ⁞ my developer [𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯](https://t.me/S_E_M_O_E_L_K_B_E_R)
+⌁ ⁞  قم بإضافة البوت اللي مجموعتك واستمع إلى الموسيقى ومشاهدة الفيديوهات ⌯""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ اضفني إلي مجموعتك ➕",
+                        "- اضف البوت اللي مجموعتك -",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("📕 دليل الاستعمال", callback_data="user_guide")],
+                [InlineKeyboardButton("- طريقة التفعيل -", callback_data="quick_use")],
                 [
-                    InlineKeyboardButton("🛠️ الاوامر", callback_data="command_list"),
-                    InlineKeyboardButton("💫 صاحب البوت", url=f"https://t.me/{OWNER_USERNAME}"),
+                    InlineKeyboardButton("- طريقة التشغيل -", callback_data="command_list"),
+                    InlineKeyboardButton("- المطور -", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👨🏾‍🤝‍👨🏼 جروب الدعم", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "- الجروب -", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "🔗 قناه الدعم", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "- القناة -", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "𝐒𝐎𝐔𝐑𝐂𝐄 𝐒𝐌𝐒𝐌🌐", url="https://t.me/C_SMSM"
+                        "𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", url="https://t.me/S_E_M_O_E_L_K_B_E_R"
                     )
                 ],
-                [    InlineKeyboardButton(
-                    "🌐للتواصل مع صاحب السورس🌐", url="https://t.me/PV_SMSM"
-                     )
-                ],
-                [
-                    InlineKeyboardButton(
-                    "🌐شات للدعم و الاستفسارات الكامله🌐", url="https://t.me/G_SMSM"
-                    )
-                ]
             ]
         ),
         disable_web_page_preview=True,
     )
-        
+
+@Client.on_callback_query(filters.regex("english"))
+async def english(_, query: CallbackQuery):
+    await query.answer("home start")
+    await query.edit_message_text(
+        f"هنا لنكات تواصل  \n لو احتجت اي حاجه كلم المطور \n عن طريق الضغط علي تواصل واتساب \nاو الضغط علي اسم المطور ده➼ [𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯](https://t.me/S_E_M_O_E_L_K_B_E_R)",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "- اضف البوت الي مجموعتك -",
+                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+                    )
+                ],
+                [InlineKeyboardButton("- للتواصل واتساب -", url=f"http://wa.me/+201118106105")],
+                [
+                    InlineKeyboardButton("- جروب دردشه -", url=f"https://t.me/CC_G6"),
+                    InlineKeyboardButton("- المطور -", url=f"https://t.me/{OWNER_NAME}"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "- جروب الدعم -", url=f"https://t.me/{GROUP_SUPPORT}"
+                    ),
+                    InlineKeyboardButton(
+                        "- قناه البوت -", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", url="https://t.me/S_E_M_O_E_L_K_B_E_R"
+                    )
+                ],
+            ]
+        ),
+        disable_web_page_preview=True,
+    )    
+    
 @Client.on_callback_query(filters.regex("help_command"))
 @check_blacklist()
 async def help(_, query: CallbackQuery):
@@ -360,3 +386,22 @@ async def on_close_menu(_, query: CallbackQuery):
 @check_blacklist()
 async def in_close_panel(_, query: CallbackQuery):
     await query.message.delete()
+
+@Client.on_callback_query(filters.regex("ahmedelnqyb"))
+async def ahmedelnqyb(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""<b>◉ انا سيمو الكبير يمكنك التواصل معي..↑↓ \n\n◉ عن طريق معرفي اول جروب التواصل بلاسفل..↑↓ \n\n [𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯](https://t.me/S_E_M_O_E_L_K_B_E_R)</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("- القناة -", url=f"https://t.me/semo_elsultan2"),
+                    InlineKeyboardButton("- الجروب -", url=f"https://t.me/SE_MO5"),
+                ],
+                [
+                    InlineKeyboardButton("- جروب الدردشه -", url=f"https://t.me/CC_G6"),
+                    InlineKeyboardButton("- تواصل واتساب -", url=f"http://wa.me/+201118106105"),
+                ],
+                [InlineKeyboardButton("𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", url=f"https://t.me/S_E_M_O_E_L_K_B_E_R")],
+            ]
+        ),
+    )
