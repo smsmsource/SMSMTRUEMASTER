@@ -60,8 +60,8 @@ async def arbic(_, query: CallbackQuery):
         disable_web_page_preview=True,
     )
 
-@Client.on_callback_query(filters.regex("english"))
-async def english(_, query: CallbackQuery):
+@Client.on_callback_query(filters.regex("nglish"))
+async def nglish(_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
         f"هنا لنكات تواصل  \n لو احتجت اي حاجه كلم المطور \n عن طريق الضغط علي تواصل واتساب \nاو الضغط علي اسم المطور ده➼ [𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯](https://t.me/S_E_M_O_E_L_K_B_E_R)",
