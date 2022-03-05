@@ -108,8 +108,8 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
             buttons = stream_markup(user_id)
             await suhu.delete()
-            await m.reply_photo(
-                photo=image,
+            await m.reply_video(
+                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 caption=f"💡 **Track added to queue »** `{pos}`\n\n"
                         f"🗂 **Name:** [{songname}]({link}) | `music`\n"
@@ -141,8 +141,8 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
                 requester = (
                     f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 )
-                await m.reply_photo(
-                    photo=image,
+                await m.reply_video(
+                    video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
                     caption=f"🗂 **Name:** [{songname}]({link}) | `music`\n"
                             f"⏱️ **Duration:** `{duration}`\n"
@@ -162,7 +162,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
         )
 
 
-@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["/play", f"play@{BOT_USERNAME}", "شغل", "تشغيل"]) & other_filters)
 @check_blacklist()
 @require_admin(permissions=["can_manage_voice_chats", "can_delete_messages", "can_invite_users"], self=True)
 async def play(c: Client, m: Message):
@@ -248,8 +248,8 @@ async def play(c: Client, m: Message):
                             await suhu.delete()
                             buttons = stream_markup(user_id)
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
-                            await m.reply_photo(
-                                photo=image,
+                            await m.reply_video(
+                                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
                                 caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                             )
@@ -273,8 +273,8 @@ async def play(c: Client, m: Message):
                                 requester = (
                                     f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 )
-                                await m.reply_photo(
-                                    photo=image,
+                                await m.reply_video(
+                                    video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                     reply_markup=InlineKeyboardMarkup(buttons),
                                     caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                                 )
@@ -326,8 +326,8 @@ async def play(c: Client, m: Message):
                         await suhu.delete()
                         requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         buttons = stream_markup(user_id)
-                        await m.reply_photo(
-                            photo=image,
+                        await m.reply_video(
+                            video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                             reply_markup=InlineKeyboardMarkup(buttons),
                             caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                         )
@@ -349,8 +349,8 @@ async def play(c: Client, m: Message):
                             await suhu.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             buttons = stream_markup(user_id)
-                            await m.reply_photo(
-                                photo=image,
+                            await m.reply_video(
+                                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
                                 caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                             )
