@@ -40,7 +40,7 @@ async def rbic(_, query: CallbackQuery):
                 [InlineKeyboardButton("- طريقة التفعيل -", callback_data="quick_use")],
                 [
                     InlineKeyboardButton("- طريقة التشغيل -", callback_data="command_list"),
-                    InlineKeyboardButton("- المطور -", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("- المطور -", url=f"https://t.me/S_E_M_O_E_L_K_B_E_R"),
                 ],
                 [
                     InlineKeyboardButton(
@@ -76,7 +76,7 @@ async def nglish(_, query: CallbackQuery):
                 [InlineKeyboardButton("- للتواصل واتساب -", url=f"http://wa.me/+201118106105")],
                 [
                     InlineKeyboardButton("- جروب دردشه -", url=f"https://t.me/CC_G6"),
-                    InlineKeyboardButton("- المطور -", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("- المطور -", url=f"https://t.me/S_E_M_O_E_L_K_B_E_R"),
                 ],
                 [
                     InlineKeyboardButton(
