@@ -125,8 +125,8 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             await loser.delete()
             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
             buttons = stream_markup(user_id)
-            await m.reply_photo(
-                photo=image,
+            await m.reply_video(
+                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 caption=f"💡 **Track added to queue »** `{pos}`\n\n"
                         f"🗂 **Name:** [{songname}]({link}) | `video`\n"
@@ -164,8 +164,8 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             await loser.delete()
             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
             buttons = stream_markup(user_id)
-            await m.reply_photo(
-                photo=image,
+            await m.reply_video(
+                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 caption=f"🗂 **Name:** [{songname}]({link}) | `video`\n"
                         f"⏱️ **Duration:** `{duration}`\n"
@@ -184,7 +184,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
         )
 
 
-@Client.on_message(command(["vplay", f"vplay@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["/vplay", f"vplay@{BOT_USERNAME}", "vplay", "فيديو"]) & other_filters)
 @check_blacklist()
 @require_admin(permissions=["can_manage_voice_chats", "can_delete_messages", "can_invite_users"], self=True)
 async def vplay(c: Client, m: Message):
@@ -272,8 +272,8 @@ async def vplay(c: Client, m: Message):
                             await loser.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             buttons = stream_markup(user_id)
-                            await m.reply_photo(
-                                photo=image,
+                            await m.reply_video(
+                                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
                                 caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                             )
@@ -296,8 +296,8 @@ async def vplay(c: Client, m: Message):
                                 await loser.delete()
                                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 buttons = stream_markup(user_id)
-                                await m.reply_photo(
-                                    photo=image,
+                                await m.reply_video(
+                                    video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                     reply_markup=InlineKeyboardMarkup(buttons),
                                     caption=f"🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                                 )
@@ -357,8 +357,8 @@ async def vplay(c: Client, m: Message):
                             f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         )
                         buttons = stream_markup(user_id)
-                        await m.reply_photo(
-                            photo=image,
+                        await m.reply_video(
+                            video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                             reply_markup=InlineKeyboardMarkup(buttons),
                             caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                         )
@@ -381,8 +381,8 @@ async def vplay(c: Client, m: Message):
                             await loser.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             buttons = stream_markup(user_id)
-                            await m.reply_photo(
-                                photo=image,
+                            await m.reply_video(
+                                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
                                 caption=f"🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                             )
@@ -496,8 +496,8 @@ async def vstream(c: Client, m: Message):
                 await loser.delete()
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 buttons = stream_markup(user_id)
-                await m.reply_photo(
-                    photo=f"{IMG_1}",
+                await m.reply_video(
+                    video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
                     caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `live`\n🧸 **Requested by:** {requester}",
                 )
@@ -527,8 +527,8 @@ async def vstream(c: Client, m: Message):
                         f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                     )
                     buttons = stream_markup(user_id)
-                    await m.reply_photo(
-                        photo=f"{IMG_2}",
+                    await m.reply_video(
+                        video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                         reply_markup=InlineKeyboardMarkup(buttons),
                         caption=f"🗂 **Name:** [{songname}]({url}) | `live`\n🧸 **Requested by:** {requester}",
                     )
