@@ -70,6 +70,10 @@
         "ALIVE_NAME": {
             "description": "fill with your telegram account nickname/name",
             "required": true
+        },
+         "ALIVE_IMG": {
+            "description": "your API_ID from my.telegram.org or @api_scrapper_bot",
+            "required": true
         }
     },
     "addons": [],
