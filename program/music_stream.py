@@ -162,7 +162,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
         )
 
 
-@Client.on_message(command(["/play", f"play@{BOT_USERNAME}", "شغل", "تشغيل"]) & other_filters)
+@Client.on_message(command(["/play", "play", f"play@{BOT_USERNAME}", "شغل", "تشغيل"]) & other_filters)
 @check_blacklist()
 @require_admin(permissions=["can_manage_voice_chats", "can_delete_messages", "can_invite_users"], self=True)
 async def play(c: Client, m: Message):
