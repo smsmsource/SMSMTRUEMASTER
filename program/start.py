@@ -57,7 +57,7 @@ async def _human_time_duration(seconds):
 
 
 @Client.on_message(
-    command(["music", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
+    command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
 @check_blacklist()
 async def start_(c: Client, message: Message):
@@ -114,7 +114,7 @@ async def start_(c: Client, message: Message):
     )
     
 @Client.on_message(
-    command(["help", f"help@{BOT_USERNAME}"]) & filters.private & ~filters.edited
+    command(["/help", f"help@{BOT_USERNAME}", " help", "الاوامر"]) & filters.private & ~filters.edited
 )
 @check_blacklist()
 async def help(c: Client, message: Message):
@@ -159,7 +159,7 @@ async def help(c: Client, message: Message):
     )
     
 @Client.on_message(
-    command(["/help", f"/help@{BOT_USERNAME}"]) & filters.group & ~filters.edited
+    command(["/help", f"/help@{BOT_USERNAME}", "help", "الاوامر"]) & filters.group & ~filters.edited
 )
 @check_blacklist()
 async def ghelp(c: Client, message: Message):
@@ -203,7 +203,7 @@ async def ghelp(c: Client, message: Message):
         disable_web_page_preview=True,
     )
 @Client.on_message(
-    command(["alive", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
+    command(["alive", f"alive@{BOT_USERNAME}", "بوت"]) & filters.group & ~filters.edited
 )
 @check_blacklist()
 async def alive(c: Client, message: Message):
@@ -215,9 +215,9 @@ async def alive(c: Client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("👨🏾‍🤝‍👨🏼 Group", url=f"https://t.me/{GROUP_SUPPORT}"),
+                InlineKeyboardButton("- 𝐆𝐑𝐎𝐔𝐏 -", url=f"https://t.me/{GROUP_SUPPORT}"),
                 InlineKeyboardButton(
-                    "📣 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "- 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 -", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
         ]
@@ -233,8 +233,7 @@ async def alive(c: Client, message: Message):
     )
 
 
-@Client.on_message(command(["ping", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
-@check_blacklist()
+@Client.on_message(command(["ping", "بنج", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
 async def ping_pong(c: Client, message: Message):
     start = time()
     m_reply = await message.reply_text("pinging...")
@@ -242,8 +241,7 @@ async def ping_pong(c: Client, message: Message):
     await m_reply.edit_text("🏓 `PONG!!`\n" f"⚡️ `{delta_ping * 1000:.3f} ms`")
 
 
-@Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
-@check_blacklist()
+@Client.on_message(command(["uptime", "الحاله", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
 async def get_uptime(c: Client, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
@@ -289,10 +287,10 @@ async def new_chat(c: Client, m: Message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("📣 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                                InlineKeyboardButton("👨🏾‍🤝‍👨🏼 Support", url=f"https://t.me/{GROUP_SUPPORT}")
+                                InlineKeyboardButton("- 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 -", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                                InlineKeyboardButton("- 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 -", url=f"https://t.me/{GROUP_SUPPORT}")
                             ],[
-                                InlineKeyboardButton("👤 Assistant", url=f"https://t.me/{me_user.username}")
+                                InlineKeyboardButton("- 𝐀𝐒𝐒𝐈𝐒𝐓𝐀𝐍𝐓 -", url=f"https://t.me/{me_user.username}")
                             ]
                         ]
                     )
@@ -301,6 +299,29 @@ async def new_chat(c: Client, m: Message):
         except BaseException:
             return
 
+@Client.on_message(command("/start") & filters.private & ~filters.edited)
+async def startt_(client: Client, message: Message):
+    await message.reply_photo(
+        photo=f"{ALIVE_IMG}",
+        caption=f""" اهلا بك انا بوت اسمي {me_bot.first_name} 📌 !**\n
+➥ ** لو عاوز تشوف الاوامر وطريقه التشغيل اضغط علي اول زر↯ **\n
+➥ ** تخصصي تشغيل الموسيقي والافلام في المحدثات الصواتيه الخاصه بي التليحرام↯ **\n
+➥ ** الزر التاني للتواصل مع المبرمج سيمو **\n
+➥ ** اضغط علي اسم المطور للدخول الي شاتو تلقائي↯**\n """,
+        reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton("قم بي الضغط للاستمرار -", callback_data="arbic")
+                        ],
+                        [   
+                            InlineKeyboardButton("تواصل المطور من هنا -", callback_data="english")
+                        ],
+                        [
+                            InlineKeyboardButton("𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯, url=f"https://t.me/S_E_M_O_E_L_K_B_E_R")
+                        ]
+                    ]
+                )
+            )
 
 chat_watcher_group = 5
 
