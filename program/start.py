@@ -311,10 +311,10 @@ async def startt_(client: Client, message: Message):
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("قم بي الضغط للاستمرار -", callback_data="arbic")
+                            InlineKeyboardButton("قم بي الضغط للاستمرار -", callback_data="rbic")
                         ],
                         [   
-                            InlineKeyboardButton("تواصل المطور من هنا -", callback_data="english")
+                            InlineKeyboardButton("تواصل المطور من هنا -", callback_data="nglish")
                         ],
                         [
                             InlineKeyboardButton("𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", url=f"https://t.me/S_E_M_O_E_L_K_B_E_R")
