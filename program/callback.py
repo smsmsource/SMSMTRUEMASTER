@@ -20,8 +20,8 @@ from config import (
 
 
 
-@Client.on_callback_query(filters.regex("arbic"))
-async def arbic(_, query: CallbackQuery):
+@Client.on_callback_query(filters.regex("rbic"))
+async def rbic(_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
         f"""مرحباً بك \n
