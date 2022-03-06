@@ -19,7 +19,7 @@ from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant, ChatAdmi
 
 
 @Client.on_message(
-    command(["userbotjoin", f"userbotjoin@{BOT_USERNAME}"]) & other_filters
+    command(["/userbotjoin", "انضم", f"userbotjoin@{BOT_USERNAME}"]) & other_filters
 )
 @check_blacklist()
 @authorized_users_only
@@ -36,13 +36,13 @@ async def join_chat(c: Client, m: Message):
             )
         await user.join_chat(invitelink)
         await remove_active_chat(chat_id)
-        return await user.send_message(chat_id, "✅ userbot joined chat")
+        return await user.send_message(chat_id, "✅ انضم الحساب المساعد بنجاح")
     except UserAlreadyParticipant:
-        return await user.send_message(chat_id, "✅ userbot already in chat")
+        return await user.send_message(chat_id, "✅ الحساب المساعد موجود في الدردشه")
 
 
 @Client.on_message(
-    command(["userbotleave", f"userbotleave@{BOT_USERNAME}"]) & other_filters
+    command(["/userbotleave", "غادر", f"userbotleave@{BOT_USERNAME}"]) & other_filters
 )
 @check_blacklist()
 @authorized_users_only
@@ -53,16 +53,16 @@ async def leave_chat(_, m: Message):
         await remove_active_chat(chat_id)
         return await _.send_message(
             chat_id,
-            "✅ userbot leaved chat",
+            "✅ الحساب المساعد غادر بنجاح",
         )
     except UserNotParticipant:
         return await _.send_message(
             chat_id,
-            "❌ userbot already leave chat",
+            "❌ الحساب المساعد لست في الدردشه",
         )
 
 
-@Client.on_message(command(["leaveall", f"leaveall@{BOT_USERNAME}"]) & ~filters.edited)
+@Client.on_message(command(["/leaveall", f"leaveall@{BOT_USERNAME}"]) & ~filters.edited)
 @bot_creator
 async def leave_all(client, message):
     if message.from_user.id not in SUDO_USERS:
@@ -71,7 +71,7 @@ async def leave_all(client, message):
     left = 0
     failed = 0
     
-    msg = await message.reply("🔄 Userbot leaving all Group !")
+    msg = await message.reply("🔄 يغادر الحساب المساعد جميع الدردشات !")
     async for dialog in user.iter_dialogs():
         try:
             await user.leave_chat(dialog.chat.id)
@@ -92,7 +92,7 @@ async def leave_all(client, message):
     )
 
 
-@Client.on_message(command(["startvc", f"startvc@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["/startvc", "افتح", f"startvc@{BOT_USERNAME}"]) & other_filters)
 @check_blacklist()
 @authorized_users_only
 async def start_group_call(c: Client, m: Message):
@@ -109,14 +109,14 @@ async def start_group_call(c: Client, m: Message):
                 random_id=user.rnd_id() // 9000000000,
             )
         )
-        await msg.edit_text("✅ Group call started !")
+        await msg.edit_text("✅ تم فتح الدردشه الصواتيه !")
     except ChatAdminRequired:
         await msg.edit_text(
-            "The userbot is not admin in this chat. To start the Group call you must promote the userbot as admin first with permission:\n\n» ❌ manage_video_chats"
+            "المستخدم ليس هو المسؤول في هذه الدردشة.  لبدء المكالمة الجماعية ، يجب أن تقوم بترقية الحساب المساعد كمسؤول أولاً بإذن:\n\n» ❌ بداء المحدثات الصواتيه"
         )
 
 
-@Client.on_message(command(["stopvc", f"stopvc@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["/stopvc", "غادر", f"stopvc@{BOT_USERNAME}"]) & other_filters)
 @check_blacklist()
 @authorized_users_only
 async def stop_group_call(c: Client, m: Message):
@@ -124,17 +124,17 @@ async def stop_group_call(c: Client, m: Message):
     msg = await c.send_message(chat_id, "`stopping...`")
     if not (
         group_call := (
-            await get_calls(m, err_msg="group call not active")
+            await get_calls(m, err_msg="المكالمة الجماعية غير نشطة")
         )
     ):
-        await msg.edit_text("❌ The group call already ended")
+        await msg.edit_text("❌ تم قفل المحادثه الصواتيه بنجاح")
         return
     await user.send(
         DiscardGroupCall(
             call=group_call
         )
     )
-    await msg.edit_text("✅ Group call has ended !")
+    await msg.edit_text("✅ انتهت المكالمة الجماعية !")
 
 
 @Client.on_message(filters.left_chat_member)
