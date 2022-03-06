@@ -61,16 +61,16 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             replied = await from_tg_get_msg(link)
         except Exception as e:
             traceback.print_exc()
-            return await m.reply_text(f"🚫 error:\n\n» {e}")
+            return await m.reply_text(f"🚫 خطا:\n\n» {e}")
     if not replied:
         return await m.reply(
-            "» reply to an **audio file** or **give something to search.**"
+            "» الرجاء كتابه **اسم الاغنيه ** الصحيحه **والمحاوله مره اخري.**"
         )
     if replied.audio or replied.voice:
         if not link:
-            suhu = await replied.reply("📥 downloading audio...")
+            suhu = await replied.reply("📥 تنزيل الصوت...")
         else:
-            suhu = await m.reply("📥 downloading audio...")
+            suhu = await m.reply("📥 تنزيل الصوت...")
         dl = await replied.download()
         link = replied.link
         songname = "music"
@@ -98,7 +98,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             thumbnail = f"{IMG_5}"
 
         if chat_id in QUEUE:
-            await suhu.edit("🔄 Queueing Track...")
+            await suhu.edit("🔄 مسار الانتظار...")
             gcname = m.chat.title
             ctitle = await CHAT_TITLE(gcname)
             title = songname
@@ -111,10 +111,10 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             await m.reply_video(
                 video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                 reply_markup=InlineKeyboardMarkup(buttons),
-                caption=f"💡 **Track added to queue »** `{pos}`\n\n"
-                        f"🗂 **Name:** [{songname}]({link}) | `music`\n"
-                        f"⏱️ **Duration:** `{duration}`\n"
-                        f"🧸 **Request by:** {requester}",
+                caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n"
+                        f"🗂 **الاسم:** [{songname}]({link}) | `music`\n"
+                        f"⏱️ **المده:** `{duration}`\n"
+                        f"🧸 **مطلوبه من:** {requester}",
             )
             remove_if_exists(image)
         else:
@@ -124,7 +124,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
                 title = songname
                 userid = m.from_user.id
                 image = await thumb(thumbnail, title, userid, ctitle)
-                await suhu.edit("🔄 Joining Group Call...")
+                await suhu.edit("جاري التشغيل المساعد..⌯")
                 await music_on(chat_id)
                 await add_active_chat(chat_id)
                 await calls.join_group_call(
@@ -144,21 +144,21 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
                 await m.reply_video(
                     video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"🗂 **Name:** [{songname}]({link}) | `music`\n"
-                            f"⏱️ **Duration:** `{duration}`\n"
-                            f"🧸 **Request by:** {requester}",
+                    caption=f"🗂 **الاسم:** [{songname}]({link}) | `music`\n"
+                            f"⏱️ **المده:** `{duration}`\n"
+                            f"🧸 **مطلوبه من:** {requester}",
                 )
                 remove_if_exists(image)
             except (NoActiveGroupCall, GroupCallNotFound):
                 await suhu.delete()
                 await remove_active_chat(chat_id)
                 traceback.print_exc()
-                await m.reply_text("❌ The bot can't find the Group call or it's inactive.\n\n» Use /startvc command to turn on the Group call !")
+                await m.reply_text("❌ يتعذر على الروبوت العثور على مكالمة المجموعة أو أنه غير نشط.\n\n» استخدم الأمر لتشغيل المكالمة الجماعية ط ⌯ افتح ⌯ !")
             except BaseException as err:
                 print(err)
     else:
         await m.reply(
-            "» reply to an **audio file** or **give something to search.**"
+            "» الرجاء كتابه  **اسم الاغنيه** الصحيح **وحاول البحث مجدداا.**"
         )
 
 
@@ -179,7 +179,7 @@ async def play(c: Client, m: Message):
         b = await c.get_chat_member(chat_id, ubot)
         if b.status == "banned":
             try:
-                await m.reply_text("❌ The userbot is banned in this chat, unban the userbot first to be able to play music !")
+                await m.reply_text("❌ تم حظر الحساب المساعد في هذه الدردشة ، قم بإلغاء حظر الحساب المسعد أولاً لتتمكن من تشغيل الموسيقى !")
                 await remove_active_chat(chat_id)
             except BaseException:
                 pass
@@ -210,7 +210,7 @@ async def play(c: Client, m: Message):
         except Exception as e:
             traceback.print_exc()
             return await m.reply_text(
-                f"❌ **userbot failed to join**\n\n**reason**: `{e}`"
+                f"❌ **فشل الحساب المساعد في الانضمام**\n\n**السبب**: `{e}`"
             )
     if replied:
         if replied.audio or replied.voice:
@@ -218,14 +218,14 @@ async def play(c: Client, m: Message):
         else:
             if len(m.command) < 2:
                 await m.reply(
-                    "» reply to an **audio file** or **give something to search.**"
+                    "» الرجاء كتابه **اسم الاغنيه** or **الصحيح وحاول مره اخري**"
                 )
             else:
-                suhu = await c.send_message(chat_id, "🔍 **Loading...**")
+                suhu = await c.send_message(chat_id, "💞 **جاري البحث انتظر ...**")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 if search == 0:
-                    await suhu.edit("❌ **no results found**")
+                    await suhu.edit("❌ **لم يتم العثور على نتائج**")
                 else:
                     songname = search[0]
                     title = search[0]
@@ -238,10 +238,10 @@ async def play(c: Client, m: Message):
                     image = await thumb(thumbnail, title, userid, ctitle)
                     sura, ytlink = await ytdl(url)
                     if sura == 0:
-                        await suhu.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
+                        await suhu.edit(f"❌ تم اكتشاف مشاكل في yt-dl\n\n» `{ytlink}`")
                     else:
                         if chat_id in QUEUE:
-                            await suhu.edit("🔄 Queueing Track...")
+                            await suhu.edit("🔄 مسار الانتظار...")
                             pos = add_to_queue(
                                 chat_id, songname, ytlink, url, "music", 0
                             )
@@ -251,12 +251,12 @@ async def play(c: Client, m: Message):
                             await m.reply_video(
                                 video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n🗂 **الاسم:** [{songname}]({url}) | `music`\n**⏱ المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                             )
                             remove_if_exists(image)
                         else:
                             try:
-                                await suhu.edit("🔄 Joining Group Call...")
+                                await suhu.edit("🔄 جاري تشغيل المساعد...")
                                 await music_on(chat_id)
                                 await add_active_chat(chat_id)
                                 await calls.join_group_call(
@@ -276,24 +276,24 @@ async def play(c: Client, m: Message):
                                 await m.reply_video(
                                     video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                     reply_markup=InlineKeyboardMarkup(buttons),
-                                    caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                    caption=f"🗂 **الاسم:** [{songname}]({url}) | `music`\n**⏱ المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                                 )
                                 remove_if_exists(image)
                             except (NoActiveGroupCall, GroupCallNotFound):
                                 await suhu.delete()
                                 await remove_active_chat(chat_id)
-                                await m.reply_text("❌ The bot can't find the Group call or it's inactive.\n\n» Use /startvc command to turn on the Group call !")
+                                await m.reply_text("❌ تمت إضافة المسار إلى قائمة الانتظار.\n\n» استخدم الأمر لتشغيل المكالمة الجماعية ⌯افتح⌯!")
                             except NoAudioSourceFound:
                                 await suhu.delete()
                                 await remove_active_chat(chat_id)
-                                await m.reply_text("❌ The content you provide to play has no audio source")
+                                await m.reply_text("❌ المحتوى الذي تقدمه للتشغيل لا يحتوي على مصدر صوت")
                             except BaseException as err:
                                 print(err)
 
     else:
         if len(m.command) < 2:
             await m.reply(
-                "» reply to an **audio file** or **give something to search.**"
+                "الرجاء كتابه **اسم الاغنيه** الصحيح **وحاول مجددا.**"
             )
         elif "t.me" in m.command[1]:
             for i in m.command[1:]:
@@ -301,11 +301,11 @@ async def play(c: Client, m: Message):
                     await play_tg_file(c, m, link=i)
                 continue
         else:
-            suhu = await c.send_message(chat_id, "🔍 **Loading...**")
+            suhu = await c.send_message(chat_id, "💞 **جاري البحث انتظر...**")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             if search == 0:
-                await suhu.edit("❌ **no results found**")
+                await suhu.edit("❌ **لم يتم العثور على نتائج**")
             else:
                 songname = search[0]
                 title = search[0]
@@ -318,10 +318,10 @@ async def play(c: Client, m: Message):
                 image = await thumb(thumbnail, title, userid, ctitle)
                 sura, ytlink = await ytdl(url)
                 if sura == 0:
-                    await suhu.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
+                    await suhu.edit(f"❌ تم اكتشاف مشاكل في yt-dl\n\n» `{ytlink}`")
                 else:
                     if chat_id in QUEUE:
-                        await suhu.edit("🔄 Queueing Track...")
+                        await suhu.edit("🔄 مسار الانتظار...")
                         pos = add_to_queue(chat_id, songname, ytlink, url, "music", 0)
                         await suhu.delete()
                         requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
@@ -329,12 +329,12 @@ async def play(c: Client, m: Message):
                         await m.reply_video(
                             video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                             reply_markup=InlineKeyboardMarkup(buttons),
-                            caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                            caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n🗂 **الاسم:** [{songname}]({url}) | `music`\n**⏱ المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                         )
                         remove_if_exists(image)
                     else:
                         try:
-                            await suhu.edit("🔄 Joining Group Call...")
+                            await suhu.edit("🔄 جاري تشغيل المساعد...")
                             await music_on(chat_id)
                             await add_active_chat(chat_id)
                             await calls.join_group_call(
@@ -352,16 +352,16 @@ async def play(c: Client, m: Message):
                             await m.reply_video(
                                 video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                caption=f"🗂 **الاسم:** [{songname}]({url}) | `music`\n**⏱ المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                             )
                             remove_if_exists(image)
                         except (NoActiveGroupCall, GroupCallNotFound):
                             await suhu.delete()
                             await remove_active_chat(chat_id)
-                            await m.reply_text("❌ The bot can't find the Group call or it's inactive.\n\n» Use /startvc command to turn on the Group call !")
+                            await m.reply_text("❌ يتعذر على الروبوت العثور على مكالمة المجموعة أو أنه غير نشط.\n\n» استخدم الأمر لتشغيل المكالمة الجماعية ⌯افتح⌯!")
                         except NoAudioSourceFound:
                             await suhu.delete()
                             await remove_active_chat(chat_id)
-                            await m.reply_text("❌ The content you provide to play has no audio source.\n\n» Try to play another song or try again later !")
+                            await m.reply_text("❌ المحتوى الذي تقدمه للتشغيل لا يحتوي على مصدر صوت.\n\n» حاول تشغيل أغنية أخرى أو حاول مرة أخرى لاحقًا !")
                         except BaseException as err:
                             print(err)
