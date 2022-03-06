@@ -80,16 +80,16 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             replied = await from_tg_get_msg(link)
         except Exception as e:
             LOGS.info(f"[ERROR]: {e}")
-            return await m.reply_text(f"🚫 error:\n\n» {e}")
+            return await m.reply_text(f"🚫 خطا:\n\n» {e}")
     if not replied:
         return await m.reply(
-            "» reply to an **audio file** or **give something to search.**"
+            "» الرجاء كتابه **اسم الاغنيه** الصحيحه **وحاول المحاوله مرا اخري**"
         )
     if replied.video or replied.document:
         if not link:
-            loser = await replied.reply("📥 downloading video...")
+            loser = await replied.reply("📥 تحميل الفيديو...")
         else:
-            loser = await m.reply("📥 downloading video...")
+            loser = await m.reply("📥 تحميل الفيديو...")
         dl = await replied.download()
         link = replied.link
         songname = "video"
@@ -114,7 +114,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             songname = "video"
 
         if chat_id in QUEUE:
-            await loser.edit("🔄 Queueing Track...")
+            await loser.edit("🔄 مسار الانتظار...")
             gcname = m.chat.title
             ctitle = await CHAT_TITLE(gcname)
             title = songname
@@ -128,15 +128,15 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             await m.reply_video(
                 video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                 reply_markup=InlineKeyboardMarkup(buttons),
-                caption=f"💡 **Track added to queue »** `{pos}`\n\n"
-                        f"🗂 **Name:** [{songname}]({link}) | `video`\n"
-                        f"⏱️ **Duration:** `{duration}`\n"
-                        f"🧸 **Request by:** {requester}",
+                caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n"
+                        f"🗂 **الاسم:** [{songname}]({link}) | `video`\n"
+                        f"⏱️ **المده:** `{duration}`\n"
+                        f"🧸 **مطلوبه من:** {requester}",
             )
             remove_if_exists(image)
         else:
          try:
-            await loser.edit("🔄 Joining Group Call...")
+            await loser.edit("🔄 الانضمام إلى مكالمة المجموعة...")
             gcname = m.chat.title
             ctitle = await CHAT_TITLE(gcname)
             title = songname
@@ -167,20 +167,20 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             await m.reply_video(
                 video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                 reply_markup=InlineKeyboardMarkup(buttons),
-                caption=f"🗂 **Name:** [{songname}]({link}) | `video`\n"
-                        f"⏱️ **Duration:** `{duration}`\n"
-                        f"🧸 **Request by:** {requester}",
+                caption=f"🗂 **الاسم:** [{songname}]({link}) | `video`\n"
+                        f"⏱️ **المده:** `{duration}`\n"
+                        f"🧸 **مطلوبه من:** {requester}",
             )
             remove_if_exists(image)
          except (NoActiveGroupCall, GroupCallNotFound):
             await loser.delete()
             await remove_active_chat(chat_id)
-            await m.reply_text("❌ The bot can't find the Group call or it's inactive.\n\n» Use /startvc command to turn on the Group call !")
+            await m.reply_text("❌ يتعذر على الروبوت العثور على مكالمة المجموعة أو أنه غير نشط.\n\n»  ⌯ افتح ⌯استخدم الأمر لتشغيل المكالمة الجماعية !")
          except BaseException as e:
             LOGS.info(f"[ERROR]: {e}")
     else:
         await m.reply(
-            "» reply to an **video file** or **give something to search.**"
+            "» الرجاء كتابه  **اسم الاغنيه** الصحيح **وحاول البحث مججداا.**"
         )
 
 
@@ -201,7 +201,7 @@ async def vplay(c: Client, m: Message):
         b = await c.get_chat_member(chat_id, ubot)
         if b.status == "banned":
             try:
-                await m.reply_text("❌ The userbot is banned in this chat, unban the userbot first to be able to play music !")
+                await m.reply_text("❌ تم حظر الحساب المساعد في هذه الدردشة ، قم بإلغاء حظر الحساب المساعد أولاً لتتمكن من تشغيل الموسيقى !")
                 await remove_active_chat(chat_id)
             except BaseException:
                 pass
@@ -232,7 +232,7 @@ async def vplay(c: Client, m: Message):
         except Exception as e:
             LOGS.info(f"[ERROR]: {e}")
             return await m.reply_text(
-                f"❌ **userbot failed to join**\n\n**reason**: `{e}`"
+                f"❌ **فشل الحساب المساعد في الانضمام**\n\n**reason**: `{e}`"
             )
     if replied:
         if replied.video or replied.document:
@@ -240,16 +240,16 @@ async def vplay(c: Client, m: Message):
         else:
             if len(m.command) < 2:
                 await m.reply(
-                    "» reply to an **video file** or **give something to search.**"
+                    "» الرجاء كتابه **كتابه اسم** الاغنيه الصحيح **وحاول البحث مججدا.**"
                 )
             else:
-                loser = await c.send_message(chat_id, "🔍 **Loading...**")
+                loser = await c.send_message(chat_id, "💞 **جاري البحث انتظر**")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 Q = 720
                 amaze = HighQualityVideo()
                 if search == 0:
-                    await loser.edit("❌ **no results found.**")
+                    await loser.edit("❌ **لم يتم العثور على نتائج.**")
                 else:
                     songname = search[0]
                     title = search[0]
@@ -262,10 +262,10 @@ async def vplay(c: Client, m: Message):
                     image = await thumb(thumbnail, title, userid, ctitle)
                     sura, ytlink = await ytdl(url)
                     if sura == 0:
-                        await loser.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
+                        await loser.edit(f"❌ تم اكتشاف مشاكل في yt-dl\n\n» `{ytlink}`")
                     else:
                         if chat_id in QUEUE:
-                            await loser.edit("🔄 Queueing Track...")
+                            await loser.edit("🔄 مسار الانتظار...")
                             pos = add_to_queue(
                                 chat_id, songname, ytlink, url, "video", Q
                             )
@@ -275,12 +275,12 @@ async def vplay(c: Client, m: Message):
                             await m.reply_video(
                                 video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n🗂 **الاسم:** [{songname}]({url}) | `video`\n⏱ **المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                             )
                             remove_if_exists(image)
                         else:
                             try:
-                                await loser.edit("🔄 Joining Group Call...")
+                                await loser.edit("🔄 الانضمام إلى مكالمة المجموعة...")
                                 await music_on(chat_id)
                                 await add_active_chat(chat_id)
                                 await calls.join_group_call(
@@ -299,28 +299,28 @@ async def vplay(c: Client, m: Message):
                                 await m.reply_video(
                                     video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                     reply_markup=InlineKeyboardMarkup(buttons),
-                                    caption=f"🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                    caption=f"🗂 **الاسم:** [{songname}]({url}) | `video`\n⏱ **المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                                 )
                                 remove_if_exists(image)
                             except (NoActiveGroupCall, GroupCallNotFound):
                                 await loser.delete()
                                 await remove_active_chat(chat_id)
-                                await m.reply_text("❌ The bot can't find the Group call or it's inactive.\n\n» Use /startvc command to turn on the Group call !")
+                                await m.reply_text("❌ يتعذر على الروبوت العثور على مكالمة المجموعة أو أنه غير نشط.\n\n»  ⌯افتح ⌯استخدم الأمر لتشغيل المكالمة الجماعية!")
                             except NoVideoSourceFound:
                                 await loser.delete()
                                 await remove_active_chat(chat_id)
-                                await m.reply_text("❌ The content you provide to play has no video source")
+                                await m.reply_text("❌ المحتوى الذي تقدمه للتشغيل لا يحتوي على مصدر صوت")
                             except NoAudioSourceFound:
                                 await loser.delete()
                                 await remove_active_chat(chat_id)
-                                await m.reply_text("❌ The content you provide to play has no audio source")
+                                await m.reply_text("❌ المحتوى الذي تقدمه للتشغيل لا يحتوي على مصدر صوت")
                             except BaseException as e:
                                 LOGS.info(f"[ERROR]: {e}")
 
     else:
         if len(m.command) < 2:
             await m.reply(
-                "» reply to an **video file** or **give something to search.**"
+                "» الرجاء كتابه **اسم الفيديو ** الصحيح **وحاول البحث مجدا.**"
             )
         elif "t.me" in m.command[1]:
             for i in m.command[1:]:
@@ -328,13 +328,13 @@ async def vplay(c: Client, m: Message):
                     await play_tg_file(c, m, link=i)
                 continue
         else:
-            loser = await c.send_message(chat_id, "🔍 **Loading...**")
+            loser = await c.send_message(chat_id, "💞 **جاري البحث انتظر...**")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             Q = 720
             amaze = HighQualityVideo()
             if search == 0:
-                await loser.edit("❌ **no results found.**")
+                await loser.edit("❌ **لم يتم العثور على نتائج.**")
             else:
                 songname = search[0]
                 title = search[0]
@@ -347,10 +347,10 @@ async def vplay(c: Client, m: Message):
                 image = await thumb(thumbnail, title, userid, ctitle)
                 sura, ytlink = await ytdl(url)
                 if sura == 0:
-                    await loser.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
+                    await loser.edit(f"❌ تم اكتشاف مشاكل في yt-dl\n\n» `{ytlink}`")
                 else:
                     if chat_id in QUEUE:
-                        await loser.edit("🔄 Queueing Track...")
+                        await loser.edit("🔄 مسار الانتظار...")
                         pos = add_to_queue(chat_id, songname, ytlink, url, "video", Q)
                         await loser.delete()
                         requester = (
@@ -360,12 +360,12 @@ async def vplay(c: Client, m: Message):
                         await m.reply_video(
                             video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                             reply_markup=InlineKeyboardMarkup(buttons),
-                            caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                            caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n🗂 **الاسم:** [{songname}]({url}) | `video`\n⏱ **المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                         )
                         remove_if_exists(image)
                     else:
                         try:
-                            await loser.edit("🔄 Joining Group Call...")
+                            await loser.edit("🔄 الانضمام إلى مكالمة المجموعة...")
                             await music_on(chat_id)
                             await add_active_chat(chat_id)
                             await calls.join_group_call(
@@ -384,21 +384,21 @@ async def vplay(c: Client, m: Message):
                             await m.reply_video(
                                 video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                caption=f"🗂 **الاسم:** [{songname}]({url}) | `video`\n⏱ **المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                             )
                             remove_if_exists(image)
                         except (NoActiveGroupCall, GroupCallNotFound):
                             await loser.delete()
                             await remove_active_chat(chat_id)
-                            await m.reply_text("❌ The bot can't find the Group call or it's inactive.\n\n» Use /startvc command to turn on the Group call !")
+                            await m.reply_text("❌ يتعذر على الروبوت العثور على مكالمة المجموعة أو أنه غير نشط.\n\n»  ⌯افتح⌯استخدم الأمر لتشغيل المكالمة الجماعية !")
                         except NoVideoSourceFound:
                             await loser.delete()
                             await remove_active_chat(chat_id)
-                            await m.reply_text("❌ The content you provide to play has no video source")
+                            await m.reply_text("❌ المحتوى الذي تقدمه للتشغيل لا يحتوي على مصدر صوت")
                         except NoAudioSourceFound:
                             await loser.delete()
                             await remove_active_chat(chat_id)
-                            await m.reply_text("❌ The content you provide to play has no audio source")
+                            await m.reply_text("❌ المحتوى الذي تقدمه للتشغيل لا يحتوي على مصدر صوت")
                         except BaseException as e:
                             LOGS.info(f"[ERROR]: {e}")
 
@@ -412,14 +412,14 @@ async def vstream(c: Client, m: Message):
     user_id = m.from_user.id
     if m.sender_chat:
         return await m.reply_text(
-            "you're an __Anonymous__ user !\n\n» revert back to your real user account to use this bot."
+            "للٲسف ٲنت لست ٲدمن __للتحكم__ في هٲذه !\n\n» ٲذهن ٲلي ٲلمٲلك للتحكم."
         )
     try:
         ubot = me_user.id
         b = await c.get_chat_member(chat_id, ubot)
         if b.status == "banned":
             try:
-                await m.reply_text("❌ The userbot is banned in this chat, unban the userbot first to be able to play music !")
+                await m.reply_text("❌ تم حظر الحساب المساعد في هذه الدردشة ، قم بإلغاء حظر الحساب المساعد أولاً لتتمكن من تشغيل الموسيقى !")
                 await remove_active_chat(chat_id)
             except BaseException:
                 pass
@@ -450,17 +450,17 @@ async def vstream(c: Client, m: Message):
         except Exception as e:
             LOGS.info(f"[ERROR]: {e}")
             return await m.reply_text(
-                f"❌ **userbot failed to join**\n\n**reason**: `{e}`"
+                f"❌ **فشل المساعد ف الانصام**\n\n**السبب**: `{e}`"
             )
 
     if len(m.command) < 2:
-        await m.reply("» Give me a youtube live url/m3u8 url to stream.")
+        await m.reply("» أعطني عنوان url مباشر على youtube / m3u8 للبث.")
     else:
         if len(m.command) == 2:
             Q = 720
             url = m.text.split(None, 1)[1]
             search = ytsearch(url)
-            loser = await c.send_message(chat_id, "🔍 **Loading...**")
+            loser = await c.send_message(chat_id, "💞 **جاري البحث انتظر...**")
         elif len(m.command) == 3:
             op = m.text.split(None, 1)[1]
             url = op.split(None, 1)[0]
@@ -473,7 +473,7 @@ async def vstream(c: Client, m: Message):
                 await m.reply(
                     "» Streaming the live video in 720p quality"
                 )
-            loser = await c.send_message(chat_id, "🔍 **Loading...**")
+            loser = await c.send_message(chat_id, "💞 **جاري البحث انتظر...**")
         else:
             pass
 
@@ -487,11 +487,11 @@ async def vstream(c: Client, m: Message):
             sura = 1
 
         if sura == 0:
-            await loser.edit(f"❌ yt-dl issues detected\n\n» `{livelink}`")
+            await loser.edit(f"❌ تم اكتشاف مشاكل في yt-dl\n\n» `{livelink}`")
         else:
             songname = search[0]
             if chat_id in QUEUE:
-                await loser.edit("🔄 Queueing Track...")
+                await loser.edit("🔄 مسار الانتظار...")
                 pos = add_to_queue(chat_id, songname, livelink, url, "video", Q)
                 await loser.delete()
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
@@ -499,7 +499,7 @@ async def vstream(c: Client, m: Message):
                 await m.reply_video(
                     video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `live`\n🧸 **Requested by:** {requester}",
+                    caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n🗂 **الاسم:** [{songname}]({url}) | `live`\n🧸 **مطلوبه من:** {requester}",
                 )
             else:
                 if Q == 720:
@@ -509,7 +509,7 @@ async def vstream(c: Client, m: Message):
                 elif Q == 360:
                     amaze = LowQualityVideo()
                 try:
-                    await loser.edit("🔄 Joining Group Call...")
+                    await loser.edit("🔄 الانضمام إلى مكالمة المجموعة...")
                     await music_on(chat_id)
                     await add_active_chat(chat_id)
                     await calls.join_group_call(
@@ -530,11 +530,11 @@ async def vstream(c: Client, m: Message):
                     await m.reply_video(
                         video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
                         reply_markup=InlineKeyboardMarkup(buttons),
-                        caption=f"🗂 **Name:** [{songname}]({url}) | `live`\n🧸 **Requested by:** {requester}",
+                        caption=f"🗂 **الاسم:** [{songname}]({url}) | `live`\n🧸 **مطلوبه من:** {requester}",
                     )
                 except (NoActiveGroupCall, GroupCallNotFound):
                     await loser.delete()
                     await remove_active_chat(chat_id)
-                    await m.reply_text("❌ The bot can't find the Group call or it's inactive.\n\n» Use /startvc command to turn on the Group call !")
+                    await m.reply_text("❌ يتعذر على الروبوت العثور على مكالمة المجموعة أو أنه غير نشط.\n\n»  ⌯ افتح⌯استخدم الأمر لتشغيل المكالمة الجماعية !")
                 except BaseException as e:
                     LOGS.info(f"[ERROR]: {e}")
