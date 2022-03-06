@@ -25,7 +25,7 @@ from pyrogram.types import (
 )
 
 
-@Client.on_message(command(["reload", f"reload@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["/reload", "رسترات", f"reload@{BOT_USERNAME}"]) & other_filters)
 @authorized_users_only
 @check_blacklist()
 async def update_admin(client, message: Message):
@@ -41,7 +41,7 @@ async def update_admin(client, message: Message):
 
 
 @Client.on_message(
-    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop"])
+    command(["/stop", "اسكت", f"stop@{BOT_USERNAME}", "/end", "وقف", "ايقاف", f"end@{BOT_USERNAME}", "vstop", "اسكت", "ايقاف", "وقف"])
     & other_filters
 )
 @authorized_users_only
@@ -53,16 +53,16 @@ async def stop(client, m: Message):
             await calls.leave_group_call(chat_id)
             await remove_active_chat(chat_id)
             clear_queue(chat_id)
-            await m.reply("✅ The userbot has disconnected from the video chat.")
+            await m.reply("✅ تم الايقاف بنجاح.")
         except Exception as e:
             traceback.print_exc()
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
-        await m.reply("❌ **nothing is streaming**")
+        await m.reply("❌ **لا يوجد مكلمه صواتيه**")
 
 
 @Client.on_message(
-    command(["pause", f"pause@{BOT_USERNAME}", "vpause"]) & other_filters
+    command(["/pause", "مؤقت", f"pause@{BOT_USERNAME}", "vpause"]) & other_filters
 )
 @authorized_users_only
 @check_blacklist()
@@ -86,7 +86,7 @@ async def pause(client, m: Message):
 
 
 @Client.on_message(
-    command(["resume", f"resume@{BOT_USERNAME}", "vresume"]) & other_filters
+    command(["/resume", "استمرار", f"resume@{BOT_USERNAME}", "vresume"]) & other_filters
 )
 @authorized_users_only
 @check_blacklist()
@@ -109,7 +109,7 @@ async def resume(client, m: Message):
         await m.reply("❌ **nothing is streaming**")
 
 
-@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip"]) & other_filters)
+@Client.on_message(command(["/skip", "تخطي", f"skip@{BOT_USERNAME}", "vskip"]) & other_filters)
 @authorized_users_only
 @check_blacklist()
 async def skip(c: Client, m: Message):
@@ -158,7 +158,7 @@ async def skip(c: Client, m: Message):
 
 
 @Client.on_message(
-    command(["mute", f"mute@{BOT_USERNAME}", "vmute"]) & other_filters
+    command(["/mute", "ميوت", f"mute@{BOT_USERNAME}", "vmute"]) & other_filters
 )
 @authorized_users_only
 @check_blacklist()
@@ -182,7 +182,7 @@ async def mute(client, m: Message):
 
 
 @Client.on_message(
-    command(["unmute", f"unmute@{BOT_USERNAME}", "vunmute"]) & other_filters
+    command(["/unmute", "الغاء", f"unmute@{BOT_USERNAME}", "vunmute"]) & other_filters
 )
 @authorized_users_only
 @check_blacklist()
@@ -314,7 +314,7 @@ async def cbunmute(_, query: CallbackQuery):
 
 
 @Client.on_message(
-    command(["volume", f"volume@{BOT_USERNAME}", "vol"]) & other_filters
+    command(["/volume", "عالي", f"volume@{BOT_USERNAME}", "vol"]) & other_filters
 )
 @authorized_users_only
 @check_blacklist()
