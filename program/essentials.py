@@ -19,7 +19,7 @@ from driver.database.dbqueue import get_active_chats
 from config import BOT_USERNAME as uname
 
 
-@Client.on_message(command(["broadcast", f"broadcast@{uname}"]) & ~filters.edited)
+@Client.on_message(command(["/broadcast", "اذاعه", f"broadcast@{uname}"]) & ~filters.edited)
 @bot_creator
 async def broadcast_message_nopin(c: Client, message: Message):
     if not message.reply_to_message:
@@ -39,11 +39,11 @@ async def broadcast_message_nopin(c: Client, message: Message):
                 sent += 1
             except Exception:
                 pass
-        await message.reply_text(f"✅ Broadcast complete in {sent} Group.")
+        await message.reply_text(f"✅ تم الاذاعه بنجاح عدد في {sent} جروب.")
         return
     if len(message.command) < 2:
         await message.reply_text(
-            "**usage**:\n\n/broadcast (`message`) or (`reply to message`)"
+            "**قوم بكتابه الرساله للاذاعه**:\n\n/broadcast او امر اذاعه (`والرساله`) or (`او قوم بعمل ربيلاي علي الرساله)"
         )
         return
     text = message.text.split(None, 1)[1]
@@ -59,10 +59,10 @@ async def broadcast_message_nopin(c: Client, message: Message):
             sent += 1
         except Exception:
             pass
-    await message.reply_text(f"✅ Broadcast complete in {sent} Group.")
+    await message.reply_text(f"✅ تم الاذاعه بي بنجاح في {sent} جروب.")
 
 
-@Client.on_message(command(["broadcast_pin", f"broadcast_pin@{uname}"]) & ~filters.edited)
+@Client.on_message(command(["/broadcast_pin", "بالتثبيت", f"broadcast_pin@{uname}"]) & ~filters.edited)
 @bot_creator
 async def broadcast_message_pin(c: Client, message: Message):
     if not message.reply_to_message:
@@ -89,12 +89,12 @@ async def broadcast_message_pin(c: Client, message: Message):
             except Exception:
                 pass
         await message.reply_text(
-            f"✅ Broadcast complete in {sent} Group.\n📌 Sent with {pin} chat pins."
+            f"✅ تم الاذاعه {sent} جروب.\n📌 تم الاذاعه بالتثبيت  {pin} جروب."
         )
         return
     if len(message.command) < 2:
         await message.reply_text(
-            "**usage**:\n\n/broadcast_pin (`message`) or (`reply to message`)"
+            "**قوم بكتابه الرساله للاذعه**:\n\n مثل هاذه ⌯ بالتثبيت ⌯ (`وكتابه الرساله`) or (`او اعمل ربيلاي علي الرساله`)"
         )
         return
     text = message.text.split(None, 1)[1]
@@ -117,11 +117,11 @@ async def broadcast_message_pin(c: Client, message: Message):
         except Exception:
             pass
     await message.reply_text(
-        f"✅ Broadcast complete in {sent} Group.\n📌 Sent with {pin} chat pins."
+        f"✅ تم الاذاعه بنجاح عدد الحروبات {sent} Group.\n📌 تم التثبيت في عدد الجروبات {pin} chat pins."
     )
 
 
-@Client.on_message(command(["stats", f"stats@{uname}"]) & ~filters.edited)
+@Client.on_message(command(["/stats", "الاحصائيات", f"stats@{uname}"]) & ~filters.edited)
 @sudo_users_only
 async def bot_statistic(c: Client, message: Message):
     name = me_bot.first_name
@@ -144,7 +144,7 @@ async def bot_statistic(c: Client, message: Message):
     await msg.edit(tgm, disable_web_page_preview=True)
 
 
-@Client.on_message(command(["calls", f"calls@{uname}"]) & ~filters.edited)
+@Client.on_message(command(["/calls", "الكولات", f"calls@{uname}"]) & ~filters.edited)
 @sudo_users_only
 async def active_group_calls(c: Client, message: Message):
     served_chats = []
