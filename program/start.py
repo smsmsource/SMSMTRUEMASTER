@@ -114,51 +114,6 @@ async def start_(c: Client, message: Message):
     )
     
 @Client.on_message(
-    command(["/help", f"help@{BOT_USERNAME}", " help", "الاوامر"]) & filters.private & ~filters.edited
-)
-@check_blacklist()
-async def help(c: Client, message: Message):
-    await message.reply_text(
-        f""" ✨ **أهلا{message.from_user.mention()} !**\n
-🔷 **To Know How to setup this Bot? Read 🤖 Setting Up This Bot in Group **\n
-🔷 **To Know Play Video/Audio/Live? Read ✍️ Quick Use Commands **\n
-🔷 **To Know Every Single Command Of Bot? Read 🎀 All Commands**\n """,
-        reply_markup=InlineKeyboardMarkup(
-        
-        [
-            [
-                InlineKeyboardButton(
-                                       "🤖 Setting Up This Bot in Group", callback_data="user_guide"
-                )
-            ],
-            [
-                InlineKeyboardButton( 
-                                       "✍️ Quick Use Commands", callback_data="quick_use"
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                                       "🎀 All Commands", callback_data="command_list"
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                                       "🔙 Go Back to Start", callback_data="home_start"
-                )
-            ],
-            [
-                InlineKeyboardButton("👨🏾‍🤝‍👨🏼 Group", url=f"https://t.me/{GROUP_SUPPORT}"),
-                InlineKeyboardButton(
-                    "🔗 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
-                ),
-            ]
-            
-        ]      
-  ),
-        disable_web_page_preview=True,
-    )
-    
-@Client.on_message(
     command(["/help", f"/help@{BOT_USERNAME}", "help", "الاوامر"]) & filters.group & ~filters.edited
 )
 @check_blacklist()
