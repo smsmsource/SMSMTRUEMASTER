@@ -102,31 +102,31 @@ async def help(_, query: CallbackQuery):
     BOT_NAME = me_bot.first_name
     await query.answer("help message")
     await query.edit_message_text(
-        f""" ✨ **Hello [{query.message.chat.first_name}] !**\n
-🔷 **To Know How to setup this Bot? Read 🤖 Setting Up This Bot in Group **\n
-🔷 **To Know Play Video/Audio/Live? Read ✍️ Quick Use Commands **\n
-🔷 **To Know Every Single Command Of Bot? Read 🎀 All Commands**\n """,
+        f""" ✨ **اهلا [{query.message.chat.first_name}] !**\n
+⌯ **لمعرفة كيفية إعداد هذا البوت؟  اقرأ➢ اعداد البوت في هاذه المجموعه **\n
+⌯ **لمعرفة تشغيل الفيديو / الصوت / لايف؟  اقرا اوامر الاستخدام السريع **\n
+⌯ **لمعرفة كل أمر من البوتات؟  اقرأ كل الاوامر**\n """,
         reply_markup=InlineKeyboardMarkup(
         
         [
             [
                 InlineKeyboardButton(
-                    "🤖 Setting Up This Bot in Group", callback_data="user_guide"
+                    "- إعداد هذا البوت في المجموعة -", callback_data="user_guide"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "✍️ Quick Use Commands", callback_data="quick_use"
+                    "- أوامر الاستخدام السريع -", callback_data="quick_use"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "🎀 All Commands", callback_data="command_list"
+                    "- كل الاوامر هنا -", callback_data="command_list"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "🔙 Go Back", callback_data="home_start"
+                    "- للرجوع من هنا -", callback_data="home_start"
                 )
             ],
             [
