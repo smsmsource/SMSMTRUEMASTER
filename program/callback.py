@@ -310,7 +310,7 @@ async def sudo_set(_, query: CallbackQuery):
 
 ⚡ __Powered by {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Go Back", callback_data="command_list")]]
+            [[InlineKeyboardButton("- للرجوع -", callback_data="command_list")]]
         ),
     )
 
@@ -338,7 +338,7 @@ async def owner_set(_, query: CallbackQuery):
 
 ⚡ __Powered by {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Go Back", callback_data="command_list")]]
+            [[InlineKeyboardButton("- للرجوع -", callback_data="command_list")]]
         ),
     )
 
