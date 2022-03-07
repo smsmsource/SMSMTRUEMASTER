@@ -164,43 +164,43 @@ async def help(c: Client, message: Message):
 @check_blacklist()
 async def ghelp(c: Client, message: Message):
     await message.reply_text(
-        f""" ✨ **Hello {message.from_user.mention()} !**\n
-🔷 **To Know How to setup this Bot? Read 🤖 Setting Up This Bot in Group **\n
-🔷 **To Know Play Video/Audio/Live? Read ✍️ Quick Use Commands **\n
-🔷 **To Know Every Single Command Of Bot? Read 🎀 All Commands**\n """,
+        f""" ✨ **اهلا [{query.message.chat.first_name}] !**\n
+⌯ **لمعرفة كيفية إعداد هذا البوت؟  اقرأ➢ اعداد البوت في هاذه المجموعه **\n
+⌯ **لمعرفة تشغيل الفيديو / الصوت / لايف؟  اقرا اوامر الاستخدام السريع **\n
+⌯ **لمعرفة كل أمر من البوتات؟  اقرأ كل الاوامر**\n """,
         reply_markup=InlineKeyboardMarkup(
         
         [
             [
                 InlineKeyboardButton(
-                                       "🤖 Setting Up This Bot in Group", callback_data="user_guide"
-                )
-            ],
-            [
-                InlineKeyboardButton( 
-                                       "✍️ Quick Use Commands", callback_data="quick_use"
+                    "- إعداد هذا البوت في المجموعة -", callback_data="user_guide"
                 )
             ],
             [
                 InlineKeyboardButton(
-                                       "🎀 All Commands", callback_data="command_list"
+                    "- أوامر الاستخدام السريع -", callback_data="quick_use"
                 )
             ],
             [
                 InlineKeyboardButton(
-                                       "🔙 Go Back to Start", callback_data="home_start"
+                    "- كل الاوامر هنا -", callback_data="command_list"
                 )
             ],
             [
-                InlineKeyboardButton("👨🏾‍🤝‍👨🏼 Group", url=f"https://t.me/{GROUP_SUPPORT}"),
                 InlineKeyboardButton(
-                    "🔗 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "- للرجوع من هنا -", callback_data="home_start"
+                )
+            ],
+            [
+                InlineKeyboardButton("- جـروب الـدعـم -", url=f"https://t.me/{GROUP_SUPPORT}"),
+                InlineKeyboardButton(
+                    "- قـنـاه الـسـورس -", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
-                
+            
         ]      
   ),
-        disable_web_page_preview=True,
+    disable_web_page_preview=True,
     )
 @Client.on_message(
     command(["alive", f"alive@{BOT_USERNAME}", "بوت"]) & filters.group & ~filters.edited
