@@ -17,12 +17,12 @@ from driver.filters import command
 from driver.utils import remove_if_exists
 
 
-@Client.on_message(command(["/song", "song", f"song@{bn}"]) & ~filters.edited)
+@Client.on_message(command(["/song", "song", "تنزيل", f"song@{bn}"]) & ~filters.edited)
 @check_blacklist()
 async def song_downloader(_, message):
     await message.delete()
     query = " ".join(message.command[1:])
-    m = await message.reply("🔎 finding song...")
+    m = await message.reply("جاري البحث علي الاغنيه انتظر💞...")
     ydl_ops = {
         'format': 'bestaudio[ext=m4a]',
         'geo-bypass': True,
@@ -44,22 +44,22 @@ async def song_downloader(_, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        await m.edit("❌ song not found.\n\n» Give me a valid song name !")
+        await m.edit("❌ لم يتم العثور.\n\n» علي العنصر اكتب اسم الاغنيه صحيح!")
         print(str(e))
         return
-    await m.edit("📥 downloading song...")
+    await m.edit("📥 جاري التنزيل...")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"• uploader @{bn}"
+        rep = f"• تم التحميل يقلبي بوسطه💞 @{bn}"
         host = str(info_dict["uploader"])
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        await m.edit("📤 uploading song...")
+        await m.edit("📤 جاري التحميل...")
         await message.reply_audio(
             audio_file,
             caption=rep,
@@ -72,7 +72,7 @@ async def song_downloader(_, message):
         await m.delete()
 
     except Exception as e:
-        await m.edit("❌ error, wait for bot owner to fix")
+        await m.edit("❌ خطا قم بي الوصول لصاحب البوت")
         print(e)
     try:
         remove_if_exists(audio_file)
@@ -82,7 +82,7 @@ async def song_downloader(_, message):
 
 
 @Client.on_message(
-    command(["/vsong", f"vsong@{bn}", "video", f"video@{bn}"]) & ~filters.edited
+    command(["/vsong", "نزيل", f"vsong@{bn}", "video", f"video@{bn}"]) & ~filters.edited
 )
 @check_blacklist()
 async def video_downloader(_, message):
@@ -113,15 +113,15 @@ async def video_downloader(_, message):
     except Exception as e:
         print(e)
     try:
-        msg = await message.reply("📥 downloading video...")
+        msg = await message.reply("📥 جاري تنزيل الفيديو...")
         with YoutubeDL(ydl_opts) as ytdl:
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
         traceback.print_exc()
-        return await msg.edit(f"🚫 error: `{e}`")
+        return await msg.edit(f"🚫 خطا: `{e}`")
     preview = wget.download(thumbnail)
-    await msg.edit("📤 uploading video...")
+    await msg.edit("📤 جاري التحميل انتظر...")
     await message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
