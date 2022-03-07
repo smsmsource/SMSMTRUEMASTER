@@ -16,13 +16,13 @@ from driver.database.dbpunish import add_gban_user, is_gbanned_user, remove_gban
 from config import OWNER_ID, SUDO_USERS, BOT_USERNAME as bn
 
 
-@Client.on_message(command(["gban", f"gban@{bn}"]) & other_filters)
+@Client.on_message(command(["/gban", "حظر", f"gban@{bn}"]) & other_filters)
 @bot_creator
 async def global_banned(c: Client, message: Message):
     BOT_NAME = me_bot.first_name
     if not message.reply_to_message:
         if len(message.command) < 2:
-            await message.reply_text("**usage:**\n\n/gban [username | user_id]")
+            await message.reply_text("**قم بكتابه امر:**\n\n/gban. او حظر وايدي المستخدم[username | user_id]")
             return
         user = message.text.split(None, 2)[1]
         if "@" in user:
@@ -31,13 +31,13 @@ async def global_banned(c: Client, message: Message):
         from_user = message.from_user
         BOT_ID = me_bot.id
         if user.id == from_user.id:
-            await message.reply_text("You can't gban yourself !")
+            await message.reply_text("لا يمكنك حظر نفسك ي غبي🥺❤️ !")
         elif user.id == BOT_ID:
-            await message.reply_text("I can't gban myself !")
+            await message.reply_text("لا اسطتيع حظر نفسي🙂💞!")
         elif user.id in SUDO_USERS:
-            await message.reply_text("You can't gban sudo user !")
+            await message.reply_text("لا يمكنك حظر الادمن❤️🥺 !")
         elif user.id in OWNER_ID:
-            await message.reply_text("You can't gban my creator !")
+            await message.reply_text("لا يمكنك حظر المنشئ🙈💞 !")
         else:
             await add_gban_user(user.id)
             served_chats = []
@@ -45,7 +45,7 @@ async def global_banned(c: Client, message: Message):
             for chat in chats:
                 served_chats.append(int(chat["chat_id"]))
             m = await message.reply_text(
-                f"🚷 **Globally banning {user.mention}**\n⏱ Expected time: `{len(served_chats)}`"
+                f"🚷 **تم حظر عام💞🙈 {user.mention}**\n⏱ الوقت المتواقع: `{len(served_chats)}`"
             )
             number_of_chats = 0
             for num in served_chats:
@@ -58,7 +58,7 @@ async def global_banned(c: Client, message: Message):
                 except Exception:
                     pass
             ban_text = f"""
-🚷 **New Global ban on [{BOT_NAME}](https://t.me/{bn})
+🚷 **حظر عالمي جديد على [{BOT_NAME}](https://t.me/{bn})
 **Origin:** {message.chat.title} [`{message.chat.id}`]
 **Sudo User:** {from_user.mention}
 **Banned User:** {user.mention}
@@ -97,7 +97,7 @@ async def global_banned(c: Client, message: Message):
             for chat in chats:
                 served_chats.append(int(chat["chat_id"]))
             m = await message.reply_text(
-                f"🚷 **Globally banning {mention}**\n⏱ Expected time: `{len(served_chats)}`"
+                f"🚷 **تم حظر عام🙈💞 {mention}**\n⏱ الوقت المتواقع: `{len(served_chats)}`"
             )
             number_of_chats = 0
             for num in served_chats:
@@ -127,7 +127,7 @@ async def global_banned(c: Client, message: Message):
             return
 
 
-@Client.on_message(command(["ungban", f"ungban@{bn}"]) & other_filters)
+@Client.on_message(command(["/ungban", "فكحظر", f"ungban@{bn}"]) & other_filters)
 @bot_creator
 async def ungban_global(c: Client, message: Message):
     chat_id = message.chat.id
