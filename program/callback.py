@@ -130,9 +130,9 @@ async def help(_, query: CallbackQuery):
                 )
             ],
             [
-                InlineKeyboardButton("👨🏾‍🤝‍👨🏼 Group", url=f"https://t.me/{GROUP_SUPPORT}"),
+                InlineKeyboardButton("- جـروب الـدعـم -", url=f"https://t.me/{GROUP_SUPPORT}"),
                 InlineKeyboardButton(
-                    "🔗 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "- قـنـاه الـسـورس -", url=f"https://t.me/{UPDATES_CHANNEL}"
                 ),
             ]
             
@@ -147,19 +147,19 @@ async def help(_, query: CallbackQuery):
 async def quick_set(_, query: CallbackQuery):
     await query.answer("quick bot usage")
     await query.edit_message_text(
-        f"""ℹ️ Quick use Guide bot, please read fully !
+        f"""ᯤ دليل بوت سريع الاستخدام ، يرجى القراءة بالكامل !
 
-» /play - Type this with give the song title or youtube link or audio file to play Music. (Remember to don't play YouTube live stream by using this command!, because it will cause unforeseen problems.)
+» /play - play - شغل - تشغيل Type this with give the song title or youtube link or audio file to play Music. (Remember to don't play YouTube live stream by using this command!, because it will cause unforeseen problems.)
 
-» /vplay - Type this with give the song title or youtube link or video file to play Video. (Remember to don't play YouTube live video by using this command!, because it will cause unforeseen problems.)
+» /vplay - vplay - فيديو Type this with give the song title or youtube link or video file to play Video. (Remember to don't play YouTube live video by using this command!, because it will cause unforeseen problems.)
 
-» /vstream - Type this with give the YouTube live stream video link or m3u8 link to play live Video. (Remember to don't play local audio/video files or non-live YouTube video by using this command!, because it will cause unforeseen problems.)
+» /vstream - لايف Type this with give the YouTube live stream video link or m3u8 link to play live Video. (Remember to don't play local audio/video files or non-live YouTube video by using this command!, because it will cause unforeseen problems.)
 
 ❓ Still Have questions? Contact us in [Support Group](https://t.me/{GROUP_SUPPORT}).""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("🔙 Go Back to Bot Setup", callback_data="user_guide")],
-                [InlineKeyboardButton("🔙 Go Back to Help", callback_data="help_command")]    
+                [InlineKeyboardButton("- رجوع الي قائمه طريقه التشغيل -", callback_data="user_guide")],
+                [InlineKeyboardButton("- للرجوع الي الاوامر ـث -", callback_data="help_command")]    
             ]
         ),
         disable_web_page_preview=True,
@@ -171,28 +171,26 @@ async def quick_set(_, query: CallbackQuery):
 async def guide_set(_, query: CallbackQuery):
     await query.answer("user guide")
     await query.edit_message_text(
-        f"""❓ How to Setup This Bot in Group ?, read the Guide below !
-
-1.) First, add this bot to your Group.
-2.) Then, promote this bot as administrator on the Group also give all permissions except Anonymous admin.
-3.) After promoting this bot, type /reload in Group to update the admin data.
-3.) Invite @{me_user.username} to your group or type /userbotjoin to invite her, unfortunately the userbot will joined by itself when you use song playing commands.
-4.) Turn on/Start the video chat first before start to play video/music.
-
+        f""ᯤ كيف يتم إعداد هذا الروبوت في المجموعة؟ ، !
+1.) أولاً ، أضف هذا الروبوت إلى مجموعتك.
+2.) بعد ذلك ، قم بترقية هذا الروبوت كمسؤول في المجموعة ، وقم أيضًا بمنح جميع الأذونات باستثناء المسؤول المجهول..
+3.) بعد الترويج لهذا البوت  /reload أعد التحميل في المجموعة لتحديث بيانات المسؤول.
+3.) قم بدعوة @ {me_user.username} إلى مجموعتك أو اكتب /userbotjoin او اكتب انضملدعوتها ، لسوء الحظ ، سينضم الحساب المساعد بنفسه عند استخدام أوامر تشغيل الأغنية.
+4.) قم بتشغيل / بدء محادثة الفيديو أولاً قبل البدء في تشغيل الفيديو / الموسيقى.
 Read 
-`- END, EVERYTHING HAS BEEN SETUP -`
+`- النهاية ، تم إعداد كل شيء -`
 
-📌 If the userbot not joined to video chat, make sure if the video chat already turned on and the userbot in the chat.
+ᯤ إذا لم ينضم المستخدم الروبوت إلى الدردشة المرئية ، فتأكد من تشغيل دردشة الفيديو بالفعل ومن أن المستخدم الروبوت في الدردشة.
 
-💡 If you have a follow-up questions about this bot, you can tell it on my support chat here: @{GROUP_SUPPORT}.""",
+ᯤ إذا كانت لديك أسئلة متابعة حول هذا الروبوت ، فيمكنك إخبارها في دردشة الدعم هنا: @ {GROUP_SUPPORT} """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("» Quick use Guide «", callback_data="quick_use")
+                    InlineKeyboardButton("- دليل الاستخدام السريع -", callback_data="quick_use")
                 ],[
-                    InlineKeyboardButton("🔙 Go Back to Start", callback_data="home_start")
+                    InlineKeyboardButton("- للرجوع الي القائمه الرائسيه -", callback_data="rbic")
                 ],[
-                    InlineKeyboardButton("🔙 Go Back to Help", callback_data="help_command")
+                    InlineKeyboardButton("- للرجوع الي الاوامر -", callback_data="help_command")
                 ]
             ]   
       ),
@@ -206,24 +204,24 @@ async def commands_set(_, query: CallbackQuery):
     user_id = query.from_user.id
     await query.answer("commands menu")
     await query.edit_message_text(
-        f"""✨ **Hello [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**
+        f"""✨ **اهلا [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**
 
-» Check out the menu below to read the module information & see the list of available Commands !
+»تحقق من القائمة أدناه لقراءة معلومات الوحدة والاطلاع على قائمة الأوامر المتاحة!
 
-All commands can be used with (`! / .`) handler""",
+ارجو الاستمتاع بي المميزات💞""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("👮🏻‍♀️ Admins Commands", callback_data="admin_command"),
+                    InlineKeyboardButton("- اوامر الادمن -", callback_data="admin_command"),
                 ],[
-                    InlineKeyboardButton("👩🏻‍💼 Users Commands", callback_data="user_command"),
+                    InlineKeyboardButton("- أوامر المستخدمين -", callback_data="user_command"),
                 ],[
-                    InlineKeyboardButton("Sudo Commands", callback_data="sudo_command"),
-                    InlineKeyboardButton("Owner Commands", callback_data="owner_command"),
+                    InlineKeyboardButton("- اوامر المسؤلين -", callback_data="sudo_command"),
+                    InlineKeyboardButton("- اوامر المالك -", callback_data="owner_command"),
                 ],[
-                    InlineKeyboardButton("🔙 Go Back to Start", callback_data="home_start")
+                    InlineKeyboardButton("- للرجوع الي القائمه الرائسيه -", callback_data="rbic")
                 ],[
-                    InlineKeyboardButton("🔙 Go Back to Help", callback_data="help_command")
+                    InlineKeyboardButton("- للرجوع الي قائمه الاوامر -", callback_data="help_command")
                 ]
                    
             ]
@@ -239,22 +237,22 @@ async def user_set(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""✏️ Command list for all user.
 
-» /play (song name/link) - play music on video chat
-» /vplay (video name/link) - play video on video chat
-» /vstream (m3u8/yt live link) - play live stream video
-» /playlist - see the current playing song
+» /play - play - شغل - تشغيل (song name/link) - play music on video chat
+» /vplay - فيديو - vplay (video name/link) - play video on video chat
+» /vstream - لايف (m3u8/yt live link) - play live stream video
+» /playlist - القائمه see the current playing song
 » /lyric (query) - scrap the song lyric
 » /video (query) - download video from youtube
-» /song (query) - download song from youtube
+» /song - تنزيل للاغنيه- نزيل للفيديو  (query) - download song from youtube
 » /search (query) - search a youtube video link
-» /ping - show the bot ping status
-» /uptime - show the bot uptime status
-» /alive - show the bot alive info (in Group only)
-» /help - to Show Help Message (Full Bot Guide)
+» /ping - بنج show the bot ping status
+» /uptime -  show the bot uptime status
+» /alive - بوت show the bot alive info (in Group only)
+» /help - الاوامر to Show Help Message (Full Bot Guide)
 
 ⚡️ __Powered by {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Go Back", callback_data="command_list")]]
+            [[InlineKeyboardButton("- للرجوع -", callback_data="command_list")]]
         ),
     )
 
@@ -265,24 +263,24 @@ async def admin_set(_, query: CallbackQuery):
     BOT_NAME = me_bot.first_name
     await query.answer("admin commands")
     await query.edit_message_text(
-        f"""✏️ Command list for group admin.
+        f"""هنا اوامر الادمن 💞.
 
-» /pause - pause the current track being played
-» /resume - play the previously paused track
-» /skip - goes to the next track
-» /stop - stop playback of the track and clears the queue
+» /pause - مؤقت pause the current track being played
+» /resume - استمرار play the previously paused track
+» /skip - تخطي goes to the next track
+» /stop - /end - اسكت - وقف - ايقاف stop playback of the track and clears the queue
 » /vmute - mute the streamer userbot on group call
 » /vunmute - unmute the streamer userbot on group call
 » /volume `1-200` - adjust the volume of music (userbot must be admin)
 » /reload - reload bot and refresh the admin data
-» /userbotjoin - invite the userbot to join group
-» /userbotleave - order userbot to leave from group
-» /startvc - start/restart the group call
-» /stopvc - stop/discard the group call
+» /userbotjoin - انضم invite the userbot to join group
+» /userbotleave - غادر order userbot to leave from group
+» /startvc - افتح start/restart the group call
+» /stopvc - اقفل stop/discard the group call
 
 ⚡️ __Powered by {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Go Back", callback_data="command_list")]]
+            [[InlineKeyboardButton("- للرجوع -", callback_data="command_list")]]
         ),
     )
 
@@ -329,8 +327,8 @@ async def owner_set(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""✏️ Command list for bot owner.
 
-» /gban (`username` or `user_id`) - for global banned people, can be used only in group
-» /ungban (`username` or `user_id`) - for un-global banned people, can be used only in group
+» /gban - حظر  (`username` or `user_id`) - for global banned people, can be used only in group
+» /ungban - فكحظر (`username` or `user_id`) - for un-global banned people, can be used only in group
 » /update - update your bot to latest version
 » /restart - restart your bot directly
 » /leaveall - order userbot to leave from all group
@@ -351,7 +349,7 @@ async def at_set_markup_menu(_, query: CallbackQuery):
     user_id = query.from_user.id
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("❗ Only admin with manage video chat permission that can tap this button !", show_alert=True)
+        return await query.answer(" الازار دي مش ليك يحب🙂 !", show_alert=True)
     chat_id = query.message.chat.id
     user_id = query.message.from_user.id
     buttons = menu_markup(user_id)
@@ -359,7 +357,7 @@ async def at_set_markup_menu(_, query: CallbackQuery):
         await query.answer("control panel opened")
         await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
     else:
-        await query.answer("❌ nothing is currently streaming", show_alert=True)
+        await query.answer("❌ لا يوجود شئ مشغل", show_alert=True)
 
 
 @Client.on_callback_query(filters.regex("stream_home_panel"))
@@ -367,7 +365,7 @@ async def at_set_markup_menu(_, query: CallbackQuery):
 async def is_set_home_menu(_, query: CallbackQuery):
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("❗ Only admin with manage video chat permission that can tap this button !", show_alert=True)
+        return await query.answer("❗ الازار دي مش ليك يحل🙂 !", show_alert=True)
     await query.answer("control panel closed")
     user_id = query.message.from_user.id
     buttons = stream_markup(user_id)
@@ -379,7 +377,7 @@ async def is_set_home_menu(_, query: CallbackQuery):
 async def on_close_menu(_, query: CallbackQuery):
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("❗ Only admin with manage video chat permission that can tap this button !", show_alert=True)
+        return await query.answer("❗ بسلعب الازار للادمن بس💞 !", show_alert=True)
     await query.message.delete()
 
 
