@@ -159,7 +159,7 @@ async def quick_set(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("- رجوع الي قائمه طريقه التشغيل -", callback_data="user_guide")],
-                [InlineKeyboardButton("- للرجوع الي الاوامر ـث -", callback_data="help_command")]    
+                [InlineKeyboardButton("- للرجوع الي الاوامر  -", callback_data="help_command")]    
             ]
         ),
         disable_web_page_preview=True,
@@ -171,7 +171,7 @@ async def quick_set(_, query: CallbackQuery):
 async def guide_set(_, query: CallbackQuery):
     await query.answer("user guide")
     await query.edit_message_text(
-        f""ᯤ كيف يتم إعداد هذا الروبوت في المجموعة؟ ، !
+        f""" ᯤ كيف يتم إعداد هذا الروبوت في المجموعة؟ ، !
 1.) أولاً ، أضف هذا الروبوت إلى مجموعتك.
 2.) بعد ذلك ، قم بترقية هذا الروبوت كمسؤول في المجموعة ، وقم أيضًا بمنح جميع الأذونات باستثناء المسؤول المجهول..
 3.) بعد الترويج لهذا البوت  /reload أعد التحميل في المجموعة لتحديث بيانات المسؤول.
@@ -182,7 +182,7 @@ Read
 
 ᯤ إذا لم ينضم المستخدم الروبوت إلى الدردشة المرئية ، فتأكد من تشغيل دردشة الفيديو بالفعل ومن أن المستخدم الروبوت في الدردشة.
 
-ᯤ إذا كانت لديك أسئلة متابعة حول هذا الروبوت ، فيمكنك إخبارها في دردشة الدعم هنا: @ {GROUP_SUPPORT} """,
+ᯤ إذا كانت لديك أسئلة متابعة حول هذا الروبوت ، فيمكنك إخبارها في دردشة الدعم هنا: @ {GROUP_SUPPORT}.""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
