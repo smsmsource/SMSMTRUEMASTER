@@ -109,7 +109,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
             buttons = stream_markup(user_id)
             await suhu.delete()
             await m.reply_video(
-                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
+                video=f"https://telegra.ph/file/519c4cf0ee54eaade0daa.mp4",
                 reply_markup=InlineKeyboardMarkup(buttons),
                 caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n"
                         f"🗂 **الاسم:** [{songname}]({link}) | `music`\n"
@@ -142,7 +142,7 @@ async def play_tg_file(c: Client, m: Message, replied: Message = None, link: str
                     f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 )
                 await m.reply_video(
-                    video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
+                    video=f"https://telegra.ph/file/519c4cf0ee54eaade0daa.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
                     caption=f"🗂 **الاسم:** [{songname}]({link}) | `music`\n"
                             f"⏱️ **المده:** `{duration}`\n"
@@ -249,7 +249,7 @@ async def play(c: Client, m: Message):
                             buttons = stream_markup(user_id)
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_video(
-                                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
+                                video=f"https://telegra.ph/file/519c4cf0ee54eaade0daa.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
                                 caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n🗂 **الاسم:** [{songname}]({url}) | `music`\n**⏱ المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                             )
@@ -274,7 +274,7 @@ async def play(c: Client, m: Message):
                                     f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 )
                                 await m.reply_video(
-                                    video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
+                                    video=f"https://telegra.ph/file/519c4cf0ee54eaade0daa.mp4",
                                     reply_markup=InlineKeyboardMarkup(buttons),
                                     caption=f"🗂 **الاسم:** [{songname}]({url}) | `music`\n**⏱ المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                                 )
@@ -327,7 +327,7 @@ async def play(c: Client, m: Message):
                         requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         buttons = stream_markup(user_id)
                         await m.reply_video(
-                            video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
+                            video=f"https://telegra.ph/file/519c4cf0ee54eaade0daa.mp4",
                             reply_markup=InlineKeyboardMarkup(buttons),
                             caption=f"💡 **تمت إضافة المسار إلى قائمة الانتظار »** `{pos}`\n\n🗂 **الاسم:** [{songname}]({url}) | `music`\n**⏱ المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                         )
@@ -350,7 +350,7 @@ async def play(c: Client, m: Message):
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             buttons = stream_markup(user_id)
                             await m.reply_video(
-                                video=f"https://telegra.ph/file/1bcec02263dae8300b63b.mp4",
+                                video=f"https://telegra.ph/file/519c4cf0ee54eaade0daa.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
                                 caption=f"🗂 **الاسم:** [{songname}]({url}) | `music`\n**⏱ المده:** `{duration}`\n🧸 **مطلوبه من:** {requester}",
                             )
