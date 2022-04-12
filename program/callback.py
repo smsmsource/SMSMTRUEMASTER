@@ -75,7 +75,7 @@ async def nglish(_, query: CallbackQuery):
                 ],
                 [InlineKeyboardButton("- للتواصل واتساب -", url=f"http://wa.me/+201025515706")],
                 [
-                    InlineKeyboardButton("- جروب دردشه -", url=f"https://t.me/"CO0O00),
+                    InlineKeyboardButton("- جروب دردشه -", url=f"https://t.me/CO0O00"),
                     InlineKeyboardButton("- المطور -", url=f"https://t.me/PV_SMSM"),
                 ],
                 [
