@@ -272,7 +272,7 @@ async def startt_(client: Client, message: Message):
                             InlineKeyboardButton("تواصل المطور من هنا -", callback_data="nglish")
                         ],
                         [
-                            InlineKeyboardButton("𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", url=f"https://t.me/S_E_M_O_E_L_K_B_E_R")
+                            InlineKeyboardButton("[⌯ 𝗗͛𝗲͛𝘃͛ 𝗦͛𝗺͛𝗦͛𝗺͛ 𝗘͛𝗹͛𝗞͛𝗯͛𝗘͛𝗿͛ - ⌯]𝟏𝟎𝐊🍷𖣩ًََِْٰٓ ⃝⃙🇽🇰 ⌯", url=f"https://t.me/PV_SMSM")
                         ]
                     ]
                 )
