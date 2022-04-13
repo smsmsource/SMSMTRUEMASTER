@@ -34,7 +34,7 @@ def menu_markup(user_id):
       InlineKeyboardButton(text="𝗨𝗡 𝗠𝗨𝗧𝗘 🔊", callback_data=f'set_unmute | {user_id}'),
     ],
     [
-      InlineKeyboardButton(text="𝗦͛𝗲͛𝗠͛𝗼͛ 𝗘͛𝗟͛𝗸͛𝗕͛𝗲͛𝗥͛ ⌯", callback_data='stream_home_panel'),
+      InlineKeyboardButton(text="[⌯ 𝗗͛𝗲͛𝘃͛ 𝗦͛𝗺͛𝗦͛𝗺͛ 𝗘͛𝗹͛𝗞͛𝗯͛𝗘͛𝗿͛ - ⌯]𝟏𝟎𝐊🍷𖣩ًََِْٰٓ ⃝⃙🇽🇰 ⌯", callback_data='stream_home_panel'),
     ]
   ]
   return buttons
